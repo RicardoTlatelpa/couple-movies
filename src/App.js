@@ -6,6 +6,7 @@ import MoviePage from './MoviePage';
 function App() {
   return (
     <React.Fragment>
+      <Navbar/>
       <Switch>
       <Route exact path = "/" component = {Landing}/>
       <Route exact path = "/movie/:id" render = {(routeProps) =>( <MoviePage {...routeProps}/>)}/>

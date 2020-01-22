@@ -3,7 +3,7 @@ import './styles/Landing.css';
 import Searchbar from './Searchbar';
 import axios from 'axios';
 import { uuid } from 'uuidv4';
-import Navbar from './Navbar';
+
 const postURL = `http://image.tmdb.org/t/p/`;
 
 
@@ -50,8 +50,7 @@ class Landing extends Component{
             backgroundSize:'cover'
         };
         return(
-            <section>         
-                <Navbar/>                 
+            <section>             
                 <div className = "Landing-container" style = {image}>   
                 
                 <h1>What's your favorite Genre?</h1>
@@ -64,7 +63,7 @@ class Landing extends Component{
                     <br/>
                     <h1>Popular</h1>
                     <div className = "card-container">
-                    <i className="fas fa-arrow-left fa-2x"></i>                    
+                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
                     <div className = "cards" >
                         {this.state.latestMovies.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -77,7 +76,7 @@ class Landing extends Component{
                             </div>
                         ))}
                     </div>                                      
-                    <i className="fas fa-arrow-right fa-2x"></i>
+                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
                     </div>
                 </div>
                 </section>
@@ -86,7 +85,7 @@ class Landing extends Component{
                     <br/>
                     <h1>Top Rated</h1>
                 <div className = "card-container">
-                    <i className="fas fa-arrow-left fa-2x"></i>                    
+                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
                     <div className = "cards" >
                         {this.state.topRated.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -99,7 +98,7 @@ class Landing extends Component{
                             </div>
                         ))}
                     </div>                                      
-                    <i className="fas fa-arrow-right fa-2x"></i>
+                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
                     </div>
                     </div>
                 </section>
@@ -108,7 +107,7 @@ class Landing extends Component{
                     <br/>
                     <h1>Now Playing</h1>
                 <div className = "card-container">
-                    <i className="fas fa-arrow-left fa-2x"></i>                    
+                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
                     <div className = "cards" >
                         {this.state.nowPlaying.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -121,7 +120,7 @@ class Landing extends Component{
                             </div>
                         ))}
                     </div>                                      
-                    <i className="fas fa-arrow-right fa-2x"></i>
+                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
                     </div>
                     </div>
                 </section>            
@@ -130,7 +129,7 @@ class Landing extends Component{
                     <br/>
                     <h1>Upcoming Titles</h1>
                 <div className = "card-container">
-                    <i className="fas fa-arrow-left fa-2x"></i>                    
+                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
                     <div className = "cards" >
                         {this.state.upcoming.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -143,7 +142,7 @@ class Landing extends Component{
                             </div>
                         ))}
                     </div>                                      
-                    <i className="fas fa-arrow-right fa-2x"></i>
+                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
                     </div>
                     </div>
                 </section>                

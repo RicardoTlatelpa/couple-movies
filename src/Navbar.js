@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import './styles/Navbar.css';
-
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     render(){
         return(
             <nav className = "navbar-main">
                 <div className = "navbar-container">
+                    <Link className = "navbar-links" to = "/">
                 <h1 style = {{color: "yellow"}}>C0upLe-m0viES</h1>
+                    </Link>
                 <ul className = "navbar-items">
-                    <li><i className="fas fa-home"></i></li>
-                    <li>Genres</li>
-                    <li>Popular</li>                    
+                    <li><Link className = "navbar-links" to = "/"><i className="fas fa-home"></i></Link></li>
+                    <li><Link className = "navbar-links" to = "/genres">Genres</Link></li>
+                    <li><Link className = "navbar-links" to = "/popular">Popular</Link></li>                                    
                 </ul>    
                 </div>
                 <div className = "burger">

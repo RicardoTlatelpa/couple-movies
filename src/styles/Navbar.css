@@ -1,8 +1,7 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    
+    box-sizing: border-box;    
 }
 body{
     background-color: #020d18;
@@ -37,6 +36,10 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+}
+.navbar-links{
+    text-decoration: none;
+    color: inherit;
 }
 .navbar-container h1{
     font-size: 2rem;

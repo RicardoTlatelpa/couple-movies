@@ -1,4 +1,110 @@
 .poster-container{
-    height: 90vh;
+    height: 98vh;
     width: 100%;
+    position: relative;
+}
+.poster-info-container{
+    padding: 50px 100px;
+}
+.poster-name{
+    padding: 40vh 10vw;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.666)
+}
+/* add animation */
+.poster-name h1{
+    font-size: 3em;
+    opacity: 0;
+    animation: slideIn 1s forwards;
+    animation-delay: .3s;
+    
+}
+.poster-info{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.poster-poster img{
+    width: 205px;
+    height: 298px;
+}
+.actor-image::after{
+    display: block;
+  position: relative;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  margin-top: -150px;
+  height: 150px;
+  width: 100%;
+  content: '';
+}
+
+.information{
+    margin: 20px;
+}
+.information span{
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+.information p{
+    width: 300px;
+    margin-top: 10px;
+}
+.poster-cast{
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.cast-container{
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.cast-member{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.cast-member-image{
+    height: 100%;    
+}
+.cast-member-image img{
+    width: 205px;
+    height: 298px;
+    border-radius: 20px;
+}
+.cast-member-overview{
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+}
+
+#cast-full{
+    text-decoration: none;
+    color: inherit;
+}
+#cast-full:hover{
+    color: yellow;
+}
+
+@media (max-width: 800px){
+    .poster-info{
+        text-align: center;
+    }
+}
+
+@keyframes slideIn{
+    0%{ 
+        opacity: 0; 
+    }
+    100%{
+         opacity: 1; 
+        }
 }

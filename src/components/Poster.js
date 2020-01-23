@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './styles/Poster.css';
-import { Link } from 'react-router-dom';
+import '../styles/Poster.css';
+
 
 class Poster extends Component{
     render(){

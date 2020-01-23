@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Poster from './Poster';
-import './styles/SearchPage.css';
+import '../styles/SearchPage.css';
 const postURL = `http://image.tmdb.org/t/p/`;
 
 class SearchPage extends Component{

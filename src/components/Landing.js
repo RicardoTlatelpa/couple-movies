@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './styles/Landing.css';
+import '../styles/Landing.css';
 import Searchbar from './Searchbar';
 import axios from 'axios';
 import { uuid } from 'uuidv4';

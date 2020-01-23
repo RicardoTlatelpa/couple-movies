@@ -1,9 +1,10 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import { Switch, Route } from 'react-router-dom';
-import Landing from './Landing';
-import MoviePage from './MoviePage';
-import SearchPage from './SearchPage';
+import Landing from './components/Landing';
+import MoviePage from './components/MoviePage';
+import SearchPage from './components/SearchPage';
+
 function App() {
   return (
     <React.Fragment>

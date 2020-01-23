@@ -1,8 +1,8 @@
-import {decimal} from './helpers/decimalCount';
-import {date} from './helpers/dateShifter';
+import {decimal} from '../helpers/decimalCount';
+import {date} from '../helpers/dateShifter';
 import React, {Component} from 'react';
 import axios from 'axios';
-import './styles/MoviePage.css';
+import '../styles/MoviePage.css';
 import Poster from './Poster';
 const baseURL = `http://image.tmdb.org/t/p/`;
 
@@ -53,7 +53,6 @@ class MoviePage extends Component{
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
     render(){                
-        console.log(this.state);
         const posterImage = {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
@@ -73,7 +72,7 @@ class MoviePage extends Component{
             {this.state.movieData.map(movie =>(
                                 <div className = "poster-info">   
                                 <div className = "poster-poster">                
-                                <img src = {`${baseURL}original/${movie.poster_path}`}/> 
+                                <img src = {`${baseURL}w342/${movie.poster_path}`}/> 
                                 </div>                                                    
                                 <div className = "information">
                                <p><span>Overview:</span><br/>{movie.overview}</p>
@@ -89,7 +88,7 @@ class MoviePage extends Component{
                                {this.state.castData.map(member => (
                                     <div className = "cast-member">
                                     <div className = "cast-member-image">
-                                        <img className = "actor-image" src = {`${baseURL}w500/${member.profile_path}`}/>
+                                        <img className = "actor-image" src = {`${baseURL}w342/${member.profile_path}`}/>
                                     </div>
                                     <div className = "cast-member-overview">                                        
                                         <p><strong>{member.name}</strong></p>
@@ -105,7 +104,7 @@ class MoviePage extends Component{
                     <h2>You may also like these:</h2>
                     <div className = "similar-container">
                         {this.state.similarData.map(movie => (
-                            <Poster imageUrl = {`${baseURL}w500${movie.poster_path}`} title = {movie.title} id = {movie.id}/>
+                            <Poster imageUrl = {`${baseURL}w342${movie.poster_path}`} title = {movie.title} id = {movie.id}/>
                         ))}
 
                         

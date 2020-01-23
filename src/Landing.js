@@ -136,7 +136,11 @@ class Landing extends Component{
                     </div>                                                          
                     </div>
                     </div>
-                </section>                
+                </section>      
+                <footer>
+                    <p>Made with love</p>
+                    <p>아름 사랑해</p>
+                </footer>          
             </section>
         )
     }

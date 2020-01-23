@@ -76,6 +76,14 @@
     margin: 0px 0px 100px 0px;
 }
 
+footer{
+    display: flex;
+    width: 100%;
+    height: 2rem;
+    justify-content: space-between;
+    padding: 40px 15px;    
+}
+
 @media screen and (max-width: 1761px){
     .Landing-container {
         padding: 10vh 0;        

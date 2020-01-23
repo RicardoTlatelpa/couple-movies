@@ -57,7 +57,7 @@ class MoviePage extends Component{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
             backgroundRepeat: 'no-repeat',   
-            backgroundPosition: this.state.resize ? `0% 0%` : 'center center'         
+            backgroundPosition: 'center center'         
         }
         return(
             <div>

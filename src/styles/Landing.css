@@ -41,7 +41,6 @@
     min-height: 400px;
 }
 .cards{
-    padding: 10px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -50,6 +49,7 @@
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
 }
+
 .card {
     margin: 0 auto;
     display: flex;
@@ -83,7 +83,14 @@ footer{
     justify-content: space-between;
     padding: 40px 15px;    
 }
-
+@media screen and (max-width: 800px){
+    .top-movies-container, .now-movies-container, .upcoming-movies-container{
+        padding:0;
+    }
+    .card-container{
+        width: 100%;
+    }
+}
 @media screen and (max-width: 1761px){
     .Landing-container {
         padding: 10vh 0;        

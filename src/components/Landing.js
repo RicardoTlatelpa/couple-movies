@@ -114,6 +114,7 @@ class Landing extends Component{
                     <div className = "container">
                     <br/>
                     <h1>Upcoming Titles</h1>
+                    <br/>
                 <div className = "card-container">                    
                     <div className = "cards" >
                         {this.state.upcoming.map(movie => (

@@ -107,6 +107,11 @@ section{
     overflow-x:scroll;
 }
 @media (max-width: 800px){
+    .similar-section{
+        padding: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
     .poster-info{
         text-align: center;
     }

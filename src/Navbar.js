@@ -7,14 +7,9 @@ class Navbar extends Component {
         super(props);
         this.state = {
             appear: false
-        }
-        this.handleNavbar = this.handleNavbar.bind(this);
+        }        
     }
-    handleNavbar(){
-        this.setState({
-            appear: !this.state.appear
-        });
-    }
+    
     render(){
         console.log(this.state.appear);
         return(
@@ -29,7 +24,7 @@ class Navbar extends Component {
                     <li><Link className = "navbar-links" to = "/popular">Popular</Link></li>                                    
                 </ul>    
                 </div>
-                <div onClick = {this.handleNavbar} className = "burger">
+                <div className = "burger">
                     <div className = "line1"></div>
                     <div className = "line2"></div>
                     <div className = "line3"></div>

@@ -20,6 +20,13 @@ section{
     animation: slideIn 1s forwards;
     animation-delay: .3s;    
 }
+.poster-name span{
+    font-size: 1.5em;
+    color: yellow;
+    animation: ratingSlide 1s forwards;
+    animation-delay: 0.6s;
+    opacity:0;    
+}
 .poster-info{
     display:flex;
     flex-direction: row;
@@ -106,6 +113,15 @@ section{
 }
 
 @keyframes slideIn{
+    0%{ 
+        opacity: 0; 
+    }
+    100%{
+         opacity: 1; 
+        }
+}
+
+@keyframes ratingSlide{
     0%{ 
         opacity: 0; 
     }

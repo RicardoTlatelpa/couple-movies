@@ -12,6 +12,7 @@ class MoviePage extends Component{
         this.state = {
             movie_id: this.props.match.params.id,
             movieData: [],
+            rating: '',
             similarData: [],
             posterPath: '',
             castData: [],
@@ -36,7 +37,8 @@ class MoviePage extends Component{
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
             movieData: [response.data],
             castData: [...secondr.data.cast.slice(0,5)],
-            similarData: [...thirdr.data.results]    
+            similarData: [...thirdr.data.results],
+            rating: response.data.vote_average   
         })        
     }
       updateWindowDimensions() {
@@ -61,8 +63,10 @@ class MoviePage extends Component{
         return(
             <div>
             <div className = "poster-container" style = {posterImage}>
+                
                 <div className = "poster-name">
                     <h1>{this.state.movie_title}</h1>                
+                    <span>Rating: {this.state.rating}</span>
                 </div>                
             </div>
             <section className = "poster-info-container">

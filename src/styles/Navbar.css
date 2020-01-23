@@ -28,12 +28,8 @@ body{
     position: relative;
     background-color: #0f2133;
     font-family: 'Dosis', sans-serif;
-    overflow: hidden;
 }
-.open{
-    transform: translateX(-215px);
-    overflow: visbile;
-}
+
 .navbar-container{
     display: flex;
     flex-direction: row;
@@ -64,20 +60,9 @@ body{
 
 @media(max-width: 710px){
     .navbar-items{
-        position: absolute;
-        background-color: white;
-        top: 8vh;
-        z-index: 100;
-        right:-215px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        background-color: #0f2133;
+        display: none;
     }
-    .navbar-items li{
-        margin: 80px;
-    }
+    
     .burger{
         visibility: visible;
     }

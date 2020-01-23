@@ -16,7 +16,7 @@ class Navbar extends Component {
                     <li><Link className = "navbar-links" to = "/popular">Popular</Link></li>                                    
                 </ul>    
                 </div>
-                <div className = "burger">
+                <div onClick = {this.props.toggle} className = "burger">
                     <div className = "line1"></div>
                     <div className = "line2"></div>
                     <div className = "line3"></div>

@@ -16,7 +16,6 @@ class Landing extends Component{
             nowPlaying: [],
             upcoming: []
         }
-        this.handleScroll = this.handleScroll.bind(this);
     }
      componentDidMount(){    
         axios.all([
@@ -34,12 +33,6 @@ class Landing extends Component{
             })
         }))
     }
-
-        handleScroll(e){
-            let element = e.target;
-            console.log(element.scrollTop);
-        }
-
     render(){
          let backgroundpic = `${postURL}/original/p3TCqUDoVsrIm8fHK9KOTfWnDjZ.jpg`;
          const image= {

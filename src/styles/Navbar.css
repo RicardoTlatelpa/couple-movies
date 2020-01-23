@@ -17,7 +17,6 @@ body{
     top: 0;
     right: 0;
     padding: 22px;
-    
 }
 .line1, .line2, .line3{
     border: 1px solid #abb7c4;
@@ -29,6 +28,11 @@ body{
     position: relative;
     background-color: #0f2133;
     font-family: 'Dosis', sans-serif;
+    overflow: hidden;
+}
+.open{
+    transform: translateX(-215px);
+    overflow: visbile;
 }
 .navbar-container{
     display: flex;
@@ -60,7 +64,19 @@ body{
 
 @media(max-width: 710px){
     .navbar-items{
-        display: none;
+        position: absolute;
+        background-color: white;
+        top: 8vh;
+        z-index: 100;
+        right:-215px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: #0f2133;
+    }
+    .navbar-items li{
+        margin: 80px;
     }
     .burger{
         visibility: visible;

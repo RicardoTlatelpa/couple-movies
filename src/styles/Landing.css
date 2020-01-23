@@ -5,6 +5,9 @@
 .container{
     text-align: center;
 }
+.Landing-section{
+    padding:0;
+}
 .Landing-container{
     padding: 30vh 50vh 20vh 50vh;
     position: relative;

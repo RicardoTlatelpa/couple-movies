@@ -3,6 +3,7 @@ import {date} from './helpers/dateShifter';
 import React, {Component} from 'react';
 import axios from 'axios';
 import './styles/MoviePage.css';
+import Poster from './Poster';
 const baseURL = `http://image.tmdb.org/t/p/`;
 
 class MoviePage extends Component{    
@@ -11,6 +12,7 @@ class MoviePage extends Component{
         this.state = {
             movie_id: this.props.match.params.id,
             movieData: [],
+            similarData: [],
             posterPath: '',
             castData: [],
             movie_title: '',
@@ -25,13 +27,16 @@ class MoviePage extends Component{
         window.addEventListener('resize', this.updateWindowDimensions);    
         const castURL = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}`
         const url = `https://api.themoviedb.org/3/movie/${this.state.movie_id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`;
+        const similar = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`
         let response = await axios.get(url);
         let secondr = await axios.get(castURL); 
+        let thirdr = await axios.get(similar);
         this.setState({
             movie_title: response.data.title,
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
             movieData: [response.data],
-            castData: [...secondr.data.cast.slice(0,5)]
+            castData: [...secondr.data.cast.slice(0,5)],
+            similarData: [...thirdr.data.results]    
         })        
     }
       updateWindowDimensions() {
@@ -46,7 +51,7 @@ class MoviePage extends Component{
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
     render(){                
-        console.log(this.state.resize);
+        console.log(this.state);
         const posterImage = {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
@@ -92,6 +97,16 @@ class MoviePage extends Component{
                             <p><a id = "cast-full" href = "#">View full cast</a></p>
                        </div>
             </section>
+                <section className = "similar-section">
+                    <h2>You may also like these:</h2>
+                    <div className = "similar-container">
+                        {this.state.similarData.map(movie => (
+                            <Poster imageUrl = {`${baseURL}w500${movie.poster_path}`} title = {movie.title} id = {movie.id}/>
+                        ))}
+
+                        
+                    </div>
+                </section>
             </div>
         )
     }

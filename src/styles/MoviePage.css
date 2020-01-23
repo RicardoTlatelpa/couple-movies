@@ -3,21 +3,22 @@
     width: 100%;
     position: relative;
 }
-.poster-info-container{
-    padding: 50px 100px;
+section{
+    padding: 10px 100px;
 }
 .poster-name{
     padding: 40vh 10vw;
     text-align: center;
     color: rgba(255, 255, 255, 0.666)
 }
-/* add animation */
+.poster-info-container{
+    margin-top: 30px;
+}
 .poster-name h1{
     font-size: 3em;
     opacity: 0;
     animation: slideIn 1s forwards;
-    animation-delay: .3s;
-    
+    animation-delay: .3s;    
 }
 .poster-info{
     display:flex;
@@ -93,7 +94,11 @@
 #cast-full:hover{
     color: yellow;
 }
-
+.similar-container{
+    display:flex;
+    flex-direction: row;
+    overflow-x:scroll;
+}
 @media (max-width: 800px){
     .poster-info{
         text-align: center;

@@ -41,7 +41,6 @@ class Landing extends Component{
         }
 
     render(){
-        console.log(this.state);
          let backgroundpic = `${postURL}/original/p3TCqUDoVsrIm8fHK9KOTfWnDjZ.jpg`;
          const image= {
             background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${backgroundpic})`,
@@ -50,10 +49,10 @@ class Landing extends Component{
             backgroundSize:'cover'
         };
         return(
-            <section>             
+            <section className = "Landing-section">             
                 <div className = "Landing-container" style = {image}>   
                 
-                <h1>What's your favorite Genre?</h1>
+                <h1>Search for a movie:</h1>
                 <br/>
                 <Searchbar/>                
                 </div>                
@@ -63,7 +62,6 @@ class Landing extends Component{
                     <br/>
                     <h1>Popular</h1>
                     <div className = "card-container">
-                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
                     <div className = "cards" >
                         {this.state.latestMovies.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -75,8 +73,7 @@ class Landing extends Component{
                                     </div>
                             </div>
                         ))}
-                    </div>                                      
-                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
+                    </div>                                                      
                     </div>
                 </div>
                 </section>
@@ -84,8 +81,7 @@ class Landing extends Component{
                     <div className = "container">
                     <br/>
                     <h1>Top Rated</h1>
-                <div className = "card-container">
-                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
+                <div className = "card-container">            
                     <div className = "cards" >
                         {this.state.topRated.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -97,8 +93,7 @@ class Landing extends Component{
                                     </div>
                             </div>
                         ))}
-                    </div>                                      
-                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
+                    </div>                                                          
                     </div>
                     </div>
                 </section>
@@ -106,8 +101,7 @@ class Landing extends Component{
                     <div className = "container">
                     <br/>
                     <h1>Now Playing</h1>
-                <div className = "card-container">
-                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
+                <div className = "card-container">                    
                     <div className = "cards" >
                         {this.state.nowPlaying.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -119,8 +113,7 @@ class Landing extends Component{
                                     </div>
                             </div>
                         ))}
-                    </div>                                      
-                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
+                    </div>                                                          
                     </div>
                     </div>
                 </section>            
@@ -128,8 +121,7 @@ class Landing extends Component{
                     <div className = "container">
                     <br/>
                     <h1>Upcoming Titles</h1>
-                <div className = "card-container">
-                    {/* <i className="fas fa-arrow-left fa-2x"></i>                     */}
+                <div className = "card-container">                    
                     <div className = "cards" >
                         {this.state.upcoming.map(movie => (
                             <div key = {uuid()} className = "card"> 
@@ -141,8 +133,7 @@ class Landing extends Component{
                                     </div>
                             </div>
                         ))}
-                    </div>                                      
-                    {/* <i className="fas fa-arrow-right fa-2x"></i> */}
+                    </div>                                                          
                     </div>
                     </div>
                 </section>                
@@ -151,11 +142,5 @@ class Landing extends Component{
     }
 }
 
-/* for reference <div className = "card movie1">                            
-<a href = "#"><div className = "card-img"></div></a>
-<div className = "card-movie-title">
-    <h1>The Avengers</h1>
-</div>
-</div>
-*/
+
 export default Landing;

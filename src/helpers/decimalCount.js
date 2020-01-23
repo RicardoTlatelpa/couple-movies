@@ -1,4 +1,7 @@
 function decimal(number){
+  if(number === 0){
+    return 'N/A';
+  }
     let string = number.toString().split('').reverse();  
     let count = 0;
     for(let i = 0; i < string.length; i++){

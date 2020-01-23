@@ -83,6 +83,9 @@ footer{
     justify-content: space-between;
     padding: 40px 15px;    
 }
+footer span{
+    padding-bottom: 20px;
+}
 @media screen and (max-width: 800px){
     .top-movies-container, .now-movies-container, .upcoming-movies-container{
         padding:0;

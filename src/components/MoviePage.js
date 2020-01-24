@@ -29,9 +29,12 @@ class MoviePage extends Component{
         const castURL = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}`
         const url = `https://api.themoviedb.org/3/movie/${this.state.movie_id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`;
         const similar = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`
+        const trailer =  `https://api.themoviedb.org/3/movie/${this.state.movie_id}/videos?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`
         let response = await axios.get(url);
         let secondr = await axios.get(castURL); 
         let thirdr = await axios.get(similar);
+        // let trailerResponse = await axios.get(trailer);
+        // console.log(trailerResponse);
         this.setState({
             movie_title: response.data.title,
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
@@ -52,7 +55,8 @@ class MoviePage extends Component{
       componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
-    render(){                
+    render(){    
+        console.log(this.state.movieData);            
         const posterImage = {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
@@ -72,7 +76,7 @@ class MoviePage extends Component{
             {this.state.movieData.map(movie =>(
                                 <div className = "poster-info">   
                                 <div className = "poster-poster">                
-                                <img src = {`${baseURL}w342/${movie.poster_path}`}/> 
+                                <img src = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${baseURL}w342/${movie.poster_path}`}/> 
                                 </div>                                                    
                                 <div className = "information">
                                <p><span>Overview:</span><br/>{movie.overview}</p>
@@ -104,7 +108,7 @@ class MoviePage extends Component{
                     <h2>You may also like these:</h2>
                     <div className = "similar-container">
                         {this.state.similarData.map(movie => (
-                            <Poster imageUrl = {`${baseURL}w342${movie.poster_path}`} title = {movie.title} id = {movie.id}/>
+                            <Poster imageUrl = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${baseURL}w342${movie.poster_path}`} title = {movie.title} id = {movie.id}/>
                         ))}
 
                         

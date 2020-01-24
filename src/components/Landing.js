@@ -59,7 +59,7 @@ class Landing extends Component{
                         {this.state.latestMovies.map(movie => (
                             <div key = {uuid()} className = "card"> 
                             <a href = {`/movie/${movie.id}`}><div className = "card-img">
-                                <img src = {`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/>
+                                {movie.poster_path === null ? <img src = 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg'/>:<img src = {`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/> }                              
                                 </div></a>
                                 <div className = "card-movie-title">
                                     <h1>{movie.title}</h1>
@@ -79,7 +79,7 @@ class Landing extends Component{
                         {this.state.topRated.map(movie => (
                             <div key = {uuid()} className = "card"> 
                             <a href = {`/movie/${movie.id}`}><div className = "card-img">
-                                <img src = {`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/>
+                                <img src = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/>
                                 </div></a>
                                 <div className = "card-movie-title">
                                     <h1>{movie.title}</h1>

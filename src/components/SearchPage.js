@@ -24,7 +24,8 @@ class SearchPage extends Component{
                 <h1>Results:</h1>
                 <div className = "results-container">
                     {this.state.searchData.map(result => (
-                        <Poster title = {result.title} id = {result.id} imageUrl = {`${postURL}w500/${result.poster_path}`}/>
+                        
+                        <Poster title = {result.title} id = {result.id} imageUrl = {result.poster_path === null ? `https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg`:`${postURL}w500/${result.poster_path}`}/>
                     ))}
                 </div>
             </section>

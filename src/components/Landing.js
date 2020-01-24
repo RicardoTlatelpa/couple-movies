@@ -130,9 +130,10 @@ class Landing extends Component{
                     </div>                                                          
                     </div>
                     </div>
-                </section>      
+                </section>  
+                    
                 <footer>
-                    <div>
+                    <div className = "horizontal-line">
                     <p>Made with love</p>
                     <br/>
                     <span>Designed by Ricardo Tlatelpa</span>

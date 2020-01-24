@@ -86,6 +86,10 @@ footer{
 footer span{
     padding-bottom: 20px;
 }
+.horizontal-line{
+    border-top: 3px solid yellow;
+    padding: 5px;
+}
 @media screen and (max-width: 800px){
     .top-movies-container, .now-movies-container, .upcoming-movies-container{
         padding:0;

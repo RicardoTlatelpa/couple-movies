@@ -20,16 +20,15 @@ class App extends Component {
     });
   }
   render(){
-    let side;
+    
     let back;
-    if(this.state.sideNavOpen){
-      side = <Sidenav/>
+    if(this.state.sideNavOpen){      
       back = <Backdrop toggleView = {this.sideNavToggleHandler}/>
     }
   return (
     <React.Fragment>
       <Navbar toggle = {this.sideNavToggleHandler}/>
-      {side}
+      <Sidenav show = {this.state.sideNavOpen}/>
       {back}
       <Switch>
       <Route exact path = "/" component = {Landing}/>

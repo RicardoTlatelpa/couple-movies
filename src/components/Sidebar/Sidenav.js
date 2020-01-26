@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import Searchbar from '../Searchbar';
 import './Sidenav.css';
 class Sidenav extends Component{
     render(){
@@ -9,6 +9,7 @@ class Sidenav extends Component{
         }
         return(
             <div className = {drawerClasses}>
+                <Searchbar/>
                 <a className = "Sidenav-item" href = "/">Home</a>
                 <a className = "Sidenav-item" href = "/rated">Top Rated</a>
                 <a className = "Sidenav-item" href = "/popular">Popular</a>

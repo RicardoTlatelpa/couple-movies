@@ -56,7 +56,22 @@ class MoviePage extends Component{
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
     render(){    
-        
+        let hasSimilar;
+        this.state.similarData.length > 1 ? hasSimilar = (
+            <section className = "similar-section">
+            <h2>You may also like these:</h2>
+            
+                <Carousel array = {this.state.similarData}/>                        
+            
+        </section>
+        ):
+        hasSimilar = (
+            <div>
+                <center>
+                <h2>Nothing Similar Sorry.</h2>
+                </center>
+            </div>
+        )
         const posterImage = {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
@@ -104,12 +119,7 @@ class MoviePage extends Component{
                             <p><a id = "cast-full" href = "#">View full cast</a></p>
                        </div>
             </section>
-                <section className = "similar-section">
-                    <h2>You may also like these:</h2>
-                    
-                        <Carousel array = {this.state.similarData}/>                        
-                    
-                </section>
+          {hasSimilar}
             </div>
         )
     }

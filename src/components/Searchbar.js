@@ -31,9 +31,9 @@ class Searchbar extends Component{
                 type = "text"/>
                 <i className="fas fa-search fa-xs"></i>
                 
-               <Link className = "search-btn" to = {`/movie/search/${this.state.input}`}>
+               <a className = "search-btn" href = {`/movie/search/${this.state.input}`}>
                    Search
-               </Link>
+               </a>
                
                 
             </ul>

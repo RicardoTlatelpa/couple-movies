@@ -46,24 +46,24 @@ class Landing extends Component{
             
             <div className = "landing-decoration-container" style = {image}>
                 <div className = "landing-search">
-                    Search For a Movie:
+                    <h2>Search For a Movie:</h2>
                     <Searchbar/>
                 </div>
             <div className = "top-rated-section">
-            <h1>Top Rated</h1>           
+            <h2>Top Rated</h2>           
             <Carousel array={this.state.topRated} />          
             </div>
             </div>
             <div className = "latest-movies-section">
-                <h1>Latest</h1>
+                <h2>Latest</h2>
             <Carousel array = {this.state.latestMovies}/>
             </div>
             <div className = "now-playing-section">
-                <h1>Now Playing</h1>
+                <h2>Now Playing</h2>
             <Carousel array = {this.state.nowPlaying}/>
             </div>
             <div className = "upcoming-section">
-                <h1>Upcoming</h1>
+                <h2>Upcoming</h2>
             <Carousel array = {this.state.upcoming}/>
             </div>
                 <footer>

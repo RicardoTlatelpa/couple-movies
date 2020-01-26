@@ -6,6 +6,8 @@ import MoviePage from './components/MoviePage';
 import SearchPage from './components/SearchPage';
 import Sidenav from './components/Sidebar/Sidenav';
 import Backdrop from './components/Backdrop/Backdrop';
+import TopRatedPage from './TopRatedPage';
+import Popularpage from './Popularpage';
 class App extends Component {
   constructor(props){
     super(props);
@@ -34,6 +36,8 @@ class App extends Component {
       <Route exact path = "/" component = {Landing}/>
       <Route exact path = "/movie/:id" render = {(routeProps) =>( <MoviePage {...routeProps}/>)}/>
       <Route exact path = "/movie/search/:search" render = {(routeProps) => (<SearchPage {...routeProps}/>)}/>
+      <Route exact path = "/rated" render = {(routeProps) => (<TopRatedPage {...routeProps}/>)}/>
+      <Route exact path = "/popular" render ={(routeProps) => (<Popularpage {...routeProps}/>)}/>
       </Switch>
 
     </React.Fragment>

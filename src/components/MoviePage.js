@@ -59,8 +59,9 @@ class MoviePage extends Component{
         let hasSimilar;
         this.state.similarData.length > 1 ? hasSimilar = (
             <section className = "similar-section">
+                <center>
             <h2>You may also like these:</h2>
-            
+                </center>
                 <Carousel array = {this.state.similarData}/>                        
             
         </section>

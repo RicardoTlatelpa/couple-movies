@@ -11,7 +11,7 @@ class Popularpage extends Component{
         }
     }
     async componentDidMount(){
-        let response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${this.props.match.params.number}`);
+        let response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${this.props.match.params.number}`);
         this.setState({
             data: [...response.data.results]
         })

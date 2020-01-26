@@ -1,5 +1,19 @@
+.Landing-section{
+    padding:0;
+}
 .top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
     text-align: center;
+    padding: 50px 100px;
+}
+.landing-decoration-container{
+    height: 92vh;
+}
+.landing-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;   
 }
 footer{
     display: flex;
@@ -16,10 +30,12 @@ footer span{
     padding: 5px;
 }
 @media screen and (max-width: 955px){
-    .Landing-section{
-        padding:0;
+    .top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
+        padding:50px 0px;
+    
     }
 }
+
 @media screen and (max-width: 1761px){
     .Landing-container {
         padding: 10vh 0;        

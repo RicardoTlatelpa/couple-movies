@@ -43,9 +43,16 @@ class Landing extends Component{
         };
         return(
             <section className = "Landing-section">  
+            
+            <div className = "landing-decoration-container" style = {image}>
+                <div className = "landing-search">
+                    Search For a Movie:
+                    <Searchbar/>
+                </div>
             <div className = "top-rated-section">
             <h1>Top Rated</h1>           
             <Carousel array={this.state.topRated} />          
+            </div>
             </div>
             <div className = "latest-movies-section">
                 <h1>Latest</h1>

@@ -1,81 +1,6 @@
-.spaced{
-    position: relative;
-    top: 20px;
-}
-.container{
+.top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
     text-align: center;
 }
-.Landing-section{
-    padding:0;
-}
-.Landing-container{
-    padding: 30vh 50vh 20vh 50vh;
-    position: relative;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-    background-repeat:no-repeat;
-    background-size:cover;
-}
-
-.landing-movies-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 60vh;
-    border-radius: 100px;
-    background-color: #0f2133; 
-    height: auto;
-    text-align: center;
-}
-
-.card-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px 20px;
-    min-height: 400px;
-}
-.cards{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin: 0 auto;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-}
-
-.card {
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-    margin-right: 10px;
-}
-.card:hover{
-    transform: scale(1.1);
-    transition: 0.2s ease-in-out;
-}
-
-.card > *{
-    flex: 1 1 100%;
-}
-.card-movie-title{    
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-.display-section{
-    min-height: auto;
-    margin: 0px 0px 100px 0px;
-}
-
 footer{
     display: flex;
     width: 100%;
@@ -90,12 +15,9 @@ footer span{
     border-top: 3px solid yellow;
     padding: 5px;
 }
-@media screen and (max-width: 800px){
-    .top-movies-container, .now-movies-container, .upcoming-movies-container{
+@media screen and (max-width: 955px){
+    .Landing-section{
         padding:0;
-    }
-    .card-container{
-        width: 100%;
     }
 }
 @media screen and (max-width: 1761px){

@@ -3,7 +3,7 @@ import {date} from '../helpers/dateShifter';
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../styles/MoviePage.css';
-import Poster from './Poster';
+import Carousel from '../components/Carousel/Carousel';
 const baseURL = `http://image.tmdb.org/t/p/`;
 
 class MoviePage extends Component{    
@@ -56,7 +56,7 @@ class MoviePage extends Component{
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
     render(){    
-        console.log(this.state.movieData);            
+        
         const posterImage = {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
@@ -106,13 +106,9 @@ class MoviePage extends Component{
             </section>
                 <section className = "similar-section">
                     <h2>You may also like these:</h2>
-                    <div className = "similar-container">
-                        {this.state.similarData.map(movie => (
-                            <Poster imageUrl = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${baseURL}w342${movie.poster_path}`} title = {movie.title} id = {movie.id}/>
-                        ))}
-
-                        
-                    </div>
+                    
+                        <Carousel array = {this.state.similarData}/>                        
+                    
                 </section>
             </div>
         )

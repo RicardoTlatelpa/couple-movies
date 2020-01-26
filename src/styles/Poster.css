@@ -1,5 +1,23 @@
+.Poster{
+    display:inline-block;
+    vertical-align: top;
+    white-space: normal;
+    margin: 10px;
+}
 .card-inside img{
     width: 205px;
     height: 298px;
     margin: 10px;
+}
+.card-inside{
+    display: flex;
+    flex-direction: column;
+}
+.card-inside > *{
+    text-align: center;
+    width: 205px;
+}
+
+.Poster:hover{
+    transform: scale(1.1);
 }

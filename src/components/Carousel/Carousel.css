@@ -1,0 +1,28 @@
+.carousel-container{
+    padding: 5px;
+    display: flex;
+}
+.carousel-viewport{
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.carousel-viewport::-webkit-scrollbar{
+    display: none;
+}
+.carousel-nav{
+    width:35px;
+}
+.carousel-button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-button button{
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: white;
+    font-size: 2rem;
+}

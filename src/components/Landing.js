@@ -3,7 +3,7 @@ import '../styles/Landing.css';
 import Searchbar from './Searchbar';
 import axios from 'axios';
 import { uuid } from 'uuidv4';
-
+import Carousel from './Carousel/Carousel';
 const postURL = `http://image.tmdb.org/t/p/`;
 
 
@@ -42,96 +42,23 @@ class Landing extends Component{
             backgroundSize:'cover'
         };
         return(
-            <section className = "Landing-section">             
-                <div className = "Landing-container" style = {image}>   
-                
-                <h1>Search for a movie:</h1>
-                <br/>
-                <Searchbar/>                
-                </div>                
-                <br/>                
-                <section className = "display-section">
-                <div className = "landing-movies-container">
-                    <br/>
-                    <h1>Popular</h1>
-                    <div className = "card-container">
-                    <div className = "cards" >
-                        {this.state.latestMovies.map(movie => (
-                            <div key = {uuid()} className = "card"> 
-                            <a href = {`/movie/${movie.id}`}><div className = "card-img">
-                                {movie.poster_path === null ? <img src = 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg'/>:<img src = {`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/> }                              
-                                </div></a>
-                                <div className = "card-movie-title">
-                                    <h1>{movie.title}</h1>
-                                    </div>
-                            </div>
-                        ))}
-                    </div>                                                      
-                    </div>
-                </div>
-                </section>
-                <section className = "top-movies-container spaced">
-                    <div className = "container">
-                    <br/>
-                    <h1>Top Rated</h1>
-                <div className = "card-container">            
-                    <div className = "cards" >
-                        {this.state.topRated.map(movie => (
-                            <div key = {uuid()} className = "card"> 
-                            <a href = {`/movie/${movie.id}`}><div className = "card-img">
-                                <img src = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/>
-                                </div></a>
-                                <div className = "card-movie-title">
-                                    <h1>{movie.title}</h1>
-                                    </div>
-                            </div>
-                        ))}
-                    </div>                                                          
-                    </div>
-                    </div>
-                </section>
-                <section className = "now-movies-container spaced">
-                    <div className = "container">
-                    <br/>
-                    <h1>Now Playing</h1>
-                <div className = "card-container">                    
-                    <div className = "cards" >
-                        {this.state.nowPlaying.map(movie => (
-                            <div key = {uuid()} className = "card"> 
-                            <a href = {`/movie/${movie.id}`}><div className = "card-img">
-                                <img src = {`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/>
-                                </div></a>
-                                <div className = "card-movie-title">
-                                    <h1>{movie.title}</h1>
-                                    </div>
-                            </div>
-                        ))}
-                    </div>                                                          
-                    </div>
-                    </div>
-                </section>            
-                <section className = "upcoming-movies-container spaced">
-                    <div className = "container">
-                    <br/>
-                    <h1>Upcoming Titles</h1>
-                    <br/>
-                <div className = "card-container">                    
-                    <div className = "cards" >
-                        {this.state.upcoming.map(movie => (
-                            <div key = {uuid()} className = "card"> 
-                            <a href = {`/movie/${movie.id}`}><div className = "card-img">
-                                <img src = {`${postURL}/w185${movie.poster_path}`} alt = {movie.poster_path}/>
-                                </div></a>
-                                <div className = "card-movie-title">
-                                    <h1>{movie.title}</h1>
-                                    </div>
-                            </div>
-                        ))}
-                    </div>                                                          
-                    </div>
-                    </div>
-                </section>  
-                    
+            <section className = "Landing-section">  
+            <div className = "top-rated-section">
+            <h1>Top Rated</h1>           
+            <Carousel array={this.state.topRated} />          
+            </div>
+            <div className = "latest-movies-section">
+                <h1>Latest</h1>
+            <Carousel array = {this.state.latestMovies}/>
+            </div>
+            <div className = "now-playing-section">
+                <h1>Now Playing</h1>
+            <Carousel array = {this.state.nowPlaying}/>
+            </div>
+            <div className = "upcoming-section">
+                <h1>Upcoming</h1>
+            <Carousel array = {this.state.upcoming}/>
+            </div>
                 <footer>
                     <div className = "horizontal-line">
                     <p>Made with love</p>

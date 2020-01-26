@@ -3,10 +3,12 @@
     margin: 0;
     box-sizing: border-box;    
 }
+
 body{
     background-color: #020d18;
     color: #abb7c4;
     font-family: 'Roboto', sans-serif;
+    
 }
 .burger{
     visibility: hidden;

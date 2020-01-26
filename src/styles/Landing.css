@@ -6,7 +6,8 @@
     padding: 50px 100px;
 }
 .landing-decoration-container{
-    height: 92vh;
+    padding-top: 10vh;
+    height: 100vh;
 }
 .landing-search{
     display: flex;
@@ -28,6 +29,12 @@ footer span{
 .horizontal-line{
     border-top: 3px solid yellow;
     padding: 5px;
+}
+@media screen and (min-width: 530px){
+    .landing-search{
+        width: 40%;
+        margin: 0 auto;
+    }
 }
 @media screen and (max-width: 955px){
     .top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{

@@ -36,8 +36,8 @@ class App extends Component {
       <Route exact path = "/" component = {Landing}/>
       <Route exact path = "/movie/:id" render = {(routeProps) =>( <MoviePage {...routeProps}/>)}/>
       <Route exact path = "/movie/search/:search" render = {(routeProps) => (<SearchPage {...routeProps}/>)}/>
-      <Route exact path = "/rated" render = {(routeProps) => (<TopRatedPage {...routeProps}/>)}/>
-      <Route exact path = "/popular" render ={(routeProps) => (<Popularpage {...routeProps}/>)}/>
+      <Route exact path = "/rated/:number" render = {(routeProps) => (<TopRatedPage {...routeProps}/>)}/>
+      <Route exact path = "/popular/:number" render ={(routeProps) => (<Popularpage {...routeProps}/>)}/>
       </Switch>
 
     </React.Fragment>

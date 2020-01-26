@@ -1,0 +1,17 @@
+.pagination-container{
+    width: 100%;
+}
+.pagination-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.pagination-link{
+    margin: 10px;
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: inherit;
+}

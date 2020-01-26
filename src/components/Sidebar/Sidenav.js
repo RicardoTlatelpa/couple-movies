@@ -11,8 +11,8 @@ class Sidenav extends Component{
             <div className = {drawerClasses}>
                 <Searchbar/>
                 <a className = "Sidenav-item" href = "/">Home</a>
-                <a className = "Sidenav-item" href = "/rated">Top Rated</a>
-                <a className = "Sidenav-item" href = "/popular">Popular</a>
+                <a className = "Sidenav-item" href = "/rated/1">Top Rated</a>
+                <a className = "Sidenav-item" href = "/popular/1">Popular</a>
             </div>
         )
     }

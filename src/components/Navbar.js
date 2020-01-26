@@ -12,8 +12,8 @@ class Navbar extends Component {
                     </Link>
                 <ul className =  'navbar-items'>
                     <li><Link className = "navbar-links" to = "/"><i className="fas fa-home"></i></Link></li>
-                    <li><Link className = "navbar-links" to = "/rated">Top Rated</Link></li>
-                    <li><Link className = "navbar-links" to = "/popular">Popular</Link></li>    
+                    <li><Link className = "navbar-links" to = "/rated/1">Top Rated</Link></li>
+                    <li><Link className = "navbar-links" to = "/popular/1">Popular</Link></li>    
                     
                 </ul>    
                 </div>

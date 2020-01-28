@@ -5,7 +5,6 @@ import Poster from '../Poster';
 import { uuid } from 'uuidv4';
 const posterURL =`http://image.tmdb.org/t/p/`;
 
-
 //pass props to state. array of movies
 class Carousel extends Component {
     constructor(props){
@@ -52,6 +51,17 @@ class Carousel extends Component {
             />
         ))
     }
+    renderTrailers(){
+        
+        return this.props.array.map(trailer => (
+            
+            <iframe className = "trailer-component" key = {uuid()} width="420" height="315"
+            
+            src={`https://www.youtube.com/embed/${trailer.key}`} title = {trailer.name}>
+            </iframe>
+        ))
+        
+    }
     handleLeftNav(e){
         const numOfSlidesToScroll = this.state.slidesToScroll;
         const widthOfSlide = 205;
@@ -75,7 +85,7 @@ class Carousel extends Component {
         
     return (
         <div className = "carousel-container">
-            <div className = "carousel-button">
+            <div className = "carousel-button" >
             <button 
             className = "carousel-nav carousel-left-nav"
             onClick = {this.handleLeftNav}
@@ -84,7 +94,7 @@ class Carousel extends Component {
             </button>
             </div>            
             <div className = "carousel-viewport" ref = "carouselViewport">
-                {this.renderPosters()}
+                {this.props.posters ? this.renderPosters() : this.renderTrailers()}
             </div>
             <div className = "carousel-button">
             <button 

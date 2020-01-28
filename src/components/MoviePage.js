@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../styles/MoviePage.css';
 import Carousel from '../components/Carousel/Carousel';
 import { uuid } from 'uuidv4'
-
+import Trailers from './Trailers/Trailers';
 const baseURL = `http://image.tmdb.org/t/p/`;
 
 class MoviePage extends Component{    
@@ -15,6 +15,7 @@ class MoviePage extends Component{
             movie_id: this.props.match.params.id,
             movieData: [],
             rating: '',
+            trailerData: [],
             similarData: [],
             posterPath: '',
             castData: [],
@@ -36,14 +37,15 @@ class MoviePage extends Component{
         let secondr = await axios.get(castURL); 
         let thirdr = await axios.get(similar);
         let trailerResponse = await axios.get(trailer);
-        console.log(trailerResponse);
+
         this.setState({
             movie_title: response.data.title,
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
             movieData: [response.data],
             castData: [...secondr.data.cast.slice(0,5)],
             similarData: [...thirdr.data.results],
-            rating: response.data.vote_average   
+            rating: response.data.vote_average,
+            trailerData: [...trailerResponse.data.results]   
         })        
     }
       updateWindowDimensions() {
@@ -64,7 +66,9 @@ class MoviePage extends Component{
                 <center>
             <h2>You may also like these:</h2>
                 </center>
-                <Carousel array = {this.state.similarData}/>                        
+                <Carousel 
+                array = {this.state.similarData}
+                posters = {true}/>                        
             
         </section>
         ):
@@ -103,6 +107,12 @@ class MoviePage extends Component{
                                </div>                   
                            </div>
                        ) )}
+                       <div className = "poster-trailers">
+                           <center><h1>Trailers</h1></center>
+                           <hr/>
+                           <Trailers trailers = {this.state.trailerData}/>
+                           
+                       </div>
                        <div className = "poster-cast">
                             <h1>Cast</h1>
                             <hr/>

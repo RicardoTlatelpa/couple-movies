@@ -50,20 +50,20 @@ class Landing extends Component{
                 </div>
             <div className = "top-rated-section">
             <h2>Top Rated</h2>           
-            <Carousel array={this.state.topRated} />          
+            <Carousel array={this.state.topRated} posters = {true}/>          
             </div>
             </div>
             <div className = "latest-movies-section">
                 <h2>Latest</h2>
-            <Carousel array = {this.state.latestMovies}/>
+            <Carousel array = {this.state.latestMovies} posters = {true}/>
             </div>
             <div className = "now-playing-section">
                 <h2>Now Playing</h2>
-            <Carousel array = {this.state.nowPlaying}/>
+            <Carousel array = {this.state.nowPlaying} posters = {true}/>
             </div>
             <div className = "upcoming-section">
                 <h2>Upcoming</h2>
-            <Carousel array = {this.state.upcoming}/>
+            <Carousel array = {this.state.upcoming} posters = {true}/>
             </div>
                 <footer>
                     <div className = "horizontal-line">

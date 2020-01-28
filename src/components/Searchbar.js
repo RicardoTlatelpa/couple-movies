@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/Searchbar.css';
-import { uuid } from 'uuidv4';
-import { Link } from 'react-router-dom';
+
 
 
 class Searchbar extends Component{

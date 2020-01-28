@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import '../styles/MoviePage.css';
 import Carousel from '../components/Carousel/Carousel';
+import { uuid } from 'uuidv4'
+
 const baseURL = `http://image.tmdb.org/t/p/`;
 
 class MoviePage extends Component{    
@@ -33,8 +35,8 @@ class MoviePage extends Component{
         let response = await axios.get(url);
         let secondr = await axios.get(castURL); 
         let thirdr = await axios.get(similar);
-        // let trailerResponse = await axios.get(trailer);
-        // console.log(trailerResponse);
+        let trailerResponse = await axios.get(trailer);
+        console.log(trailerResponse);
         this.setState({
             movie_title: response.data.title,
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
@@ -90,9 +92,9 @@ class MoviePage extends Component{
             </div>
             <section className = "poster-info-container">
             {this.state.movieData.map(movie =>(
-                                <div className = "poster-info">   
+                                <div key = {uuid()} className = "poster-info">   
                                 <div className = "poster-poster">                
-                                <img src = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${baseURL}w342/${movie.poster_path}`}/> 
+                                <img src = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${baseURL}w342/${movie.poster_path}`} alt = {movie.id}/> 
                                 </div>                                                    
                                 <div className = "information">
                                <p><span>Overview:</span><br/>{movie.overview}</p>
@@ -106,9 +108,9 @@ class MoviePage extends Component{
                             <hr/>
                             <div className = "cast-container">
                                {this.state.castData.map(member => (
-                                    <div className = "cast-member">
+                                    <div key = {uuid()} className = "cast-member">
                                     <div className = "cast-member-image">
-                                        <img className = "actor-image" src = {`${baseURL}w342/${member.profile_path}`}/>
+                                        <img className = "actor-image" src = {`${baseURL}w342/${member.profile_path}`} alt ={member.id}/>
                                     </div>
                                     <div className = "cast-member-overview">                                        
                                         <p><strong>{member.name}</strong></p>
@@ -117,7 +119,7 @@ class MoviePage extends Component{
                                     </div>
                                ))}                               
                             </div>
-                            <p><a id = "cast-full" href = "#">View full cast</a></p>
+                           
                        </div>
             </section>
           {hasSimilar}

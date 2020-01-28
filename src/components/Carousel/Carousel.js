@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import scrollTo from './scrollToAnimate';
 import './Carousel.css';
 import Poster from '../Poster';
+import { uuid } from 'uuidv4';
 const posterURL =`http://image.tmdb.org/t/p/`;
+
+
 //pass props to state. array of movies
 class Carousel extends Component {
     constructor(props){
@@ -42,6 +45,7 @@ class Carousel extends Component {
     renderPosters(){
         return this.props.array.map(movie => (
             <Poster
+            key = {uuid()}
             id = {movie.id}
             imageUrl = {`${posterURL}w500${movie.poster_path}`}
             title ={movie.title}

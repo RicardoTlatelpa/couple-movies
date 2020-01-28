@@ -9,7 +9,7 @@ class Poster extends Component{
             <div className = "Poster">                                 
                 <div className = "card-inside">                
                 <a href = {`/movie/${this.props.id}`}>
-                <img src = {this.props.imageUrl}/>     
+                <img src = {this.props.imageUrl} alt = {this.props.id}/>     
                 </a>                                      
                 <p>{this.props.title}</p>
                 </div>            

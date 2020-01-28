@@ -107,6 +107,10 @@ section{
     overflow-x:scroll;
 }
 @media (max-width: 800px){
+    .poster-info-container{
+        padding-top: 10px;
+        padding:0;
+    }
     .similar-section{
         padding: 0;
         text-align: center;
@@ -115,6 +119,7 @@ section{
     .poster-info{
         text-align: center;
     }
+    
 }
 
 @keyframes slideIn{

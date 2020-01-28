@@ -22,9 +22,11 @@ class Popularpage extends Component{
                 <center>
                 <h1>Popular</h1>
                 </center>
+                <div className = "popular-movies-container">
                 {this.state.data.map(movie => (
                     <Poster title = {movie.title} imageUrl = {`${baseURL}w500/${movie.poster_path}`} id = {movie.id}/>
                 ))}
+                </div>
                 <div className = "pagination-container">
                     <ul className = "pagination-links">
                         <a className = "pagination-link" href = "/popular/1">1</a>

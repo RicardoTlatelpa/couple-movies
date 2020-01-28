@@ -23,9 +23,11 @@ class TopRatedPage extends Component{
                 <center>
                 <h1>Top Rated</h1>
                 </center>
+                <div className = "rated-movies-container">
                 {this.state.data.map(movie => (
                     <Poster title = {movie.title} imageUrl = {`${baseURL}w500/${movie.poster_path}`} id = {movie.id}/>
                 ))}
+                </div>
                 <div className = "pagination-container">
                     <ul className = "pagination-links">
                         <a className = "pagination-link" href = "/rated/1">1</a>

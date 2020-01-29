@@ -109,7 +109,7 @@ class MoviePage extends Component{
                        ) )}
                        <div className = "poster-trailers">
                            <center><h1>Trailers</h1></center>
-                           <hr/>
+                           
                            <Trailers trailers = {this.state.trailerData}/>
                            
                        </div>

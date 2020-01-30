@@ -12,6 +12,7 @@ class SearchPage extends Component{
         }    
     }
     async componentDidMount(){
+        this.props.toggleHeader(true);
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&query=${this.props.match.params.search}&page=1&include_adult=false`;
         let response = await axios.get(url);
         this.setState({

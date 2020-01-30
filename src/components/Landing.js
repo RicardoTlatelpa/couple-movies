@@ -16,7 +16,8 @@ class Landing extends Component{
             upcoming: []
         }
     }
-     componentDidMount(){    
+     componentDidMount(){   
+        this.props.toggleHeader(true); 
         axios.all([
             axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`),
             axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`),

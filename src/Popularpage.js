@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Poster from './components/Poster';
+
 const baseURL = `http://image.tmdb.org/t/p/`;
 
 class Popularpage extends Component{
@@ -11,6 +12,7 @@ class Popularpage extends Component{
         }
     }
     async componentDidMount(){
+        this.props.toggleHeader(true);
         let response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${this.props.match.params.number}`);
         this.setState({
             data: [...response.data.results]

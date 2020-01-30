@@ -12,9 +12,17 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      sideNavOpen: false
+      sideNavOpen: false,
+      header: true
     }
+    this.toggleHeader = this.toggleHeader.bind(this);
     this.sideNavToggleHandler = this.sideNavToggleHandler.bind(this);
+  }
+  toggleHeader(bool){
+    const { header } = this.state;
+    this.setState({
+      header: bool
+    });
   }
   sideNavToggleHandler(){
     this.setState((prevState) =>{
@@ -29,15 +37,21 @@ class App extends Component {
     }
   return (
     <React.Fragment>
-      <Navbar toggle = {this.sideNavToggleHandler}/>
+      {this.state.header ? <div>
+        <Navbar toggle = {this.sideNavToggleHandler}/>
       <Sidenav show = {this.state.sideNavOpen}/>
+      </div> : null}
+      
+      
+      
       {back}
       <Switch>
-      <Route exact path = "/" component = {Landing}/>
-      <Route exact path = "/movie/:id" render = {(routeProps) =>( <MoviePage {...routeProps}/>)}/>
-      <Route exact path = "/movie/search/:search" render = {(routeProps) => (<SearchPage {...routeProps}/>)}/>
-      <Route exact path = "/rated/:number" render = {(routeProps) => (<TopRatedPage {...routeProps}/>)}/>
-      <Route exact path = "/popular/:number" render ={(routeProps) => (<Popularpage {...routeProps}/>)}/>
+      
+      <Route exact path = "/" render = {(routeProps) => (<Landing {...routeProps} toggleHeader = {this.toggleHeader}/>)}/>
+      <Route exact path = "/movie/:id" render = {(routeProps) =>( <MoviePage {...routeProps} toggleHeader = {this.toggleHeader}  />)}/>
+      <Route exact path = "/movie/search/:search" render = {(routeProps) => (<SearchPage {...routeProps} toggleHeader = {this.toggleHeader}/>)}/>
+      <Route exact path = "/rated/:number" render = {(routeProps) => (<TopRatedPage {...routeProps} toggleHeader = {this.toggleHeader}/>)}/>
+      <Route exact path = "/popular/:number" render ={(routeProps) => (<Popularpage {...routeProps} toggleHeader = {this.toggleHeader}/>)}/>
       </Switch>
 
     </React.Fragment>

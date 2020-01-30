@@ -6,6 +6,7 @@ import '../styles/MoviePage.css';
 import Carousel from '../components/Carousel/Carousel';
 import { uuid } from 'uuidv4'
 import Trailers from './Trailers/Trailers';
+import { Link } from 'react-router-dom';
 const baseURL = `http://image.tmdb.org/t/p/`;
 
 class MoviePage extends Component{    
@@ -27,6 +28,7 @@ class MoviePage extends Component{
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
     async componentDidMount(){
+        this.props.toggleHeader(false);
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);    
         const castURL = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}`
@@ -37,7 +39,7 @@ class MoviePage extends Component{
         let secondr = await axios.get(castURL); 
         let thirdr = await axios.get(similar);
         let trailerResponse = await axios.get(trailer);
-
+        
         this.setState({
             movie_title: response.data.title,
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
@@ -47,6 +49,9 @@ class MoviePage extends Component{
             rating: response.data.vote_average,
             trailerData: [...trailerResponse.data.results]   
         })        
+    }
+    navigateBack(){
+
     }
       updateWindowDimensions() {
         this.setState({width: window.innerWidth, height: window.innerHeight});  
@@ -88,7 +93,9 @@ class MoviePage extends Component{
         return(
             <div>
             <div className = "poster-container" style = {posterImage}>
-                
+            <Link to = "/">           
+            <i id = 'poster-arrow-left' style = {{color: "white"}} className="fas fa-arrow-left"></i>
+            </Link>
                 <div className = "poster-name">
                     <h1>{this.state.movie_title}</h1>                
                     <span>Rating: {this.state.rating}</span>
@@ -108,7 +115,7 @@ class MoviePage extends Component{
                            </div>
                        ) )}
                        <div className = "poster-trailers">
-                           <center><h1>Trailers</h1></center>
+                           
                            
                            <Trailers trailers = {this.state.trailerData}/>
                            

@@ -12,6 +12,7 @@ class TopRatedPage extends Component{
         }
     }
     async componentDidMount(){
+        this.props.toggleHeader(true);
         let response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${this.props.match.params.number}`);
         this.setState({
             data: [...response.data.results]

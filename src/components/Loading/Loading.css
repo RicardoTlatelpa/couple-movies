@@ -1,0 +1,33 @@
+.loading-container{
+    position: absolute;
+    z-index: 1000000;
+    height: 300vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.571);
+    display: flex;
+    justify-content: center;
+}
+.loader{
+    position: relative;
+    top: 20px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border-top: 5px solid orange;
+    border-bottom: 5px solid yellow;
+    opacity:1;
+    animation-name: loader;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+@keyframes loader{
+    from{
+        transform: rotate(0deg);   
+    }
+    to{
+        transform: rotate(360deg);      
+    }
+}

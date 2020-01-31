@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Loading from './Loading/Loading';
 import '../styles/Landing.css';
 import Searchbar from './Searchbar';
 import axios from 'axios';
@@ -13,7 +14,8 @@ class Landing extends Component{
             latestMovies: [],
             topRated: [],
             nowPlaying: [],
-            upcoming: []
+            upcoming: [],
+            Loading: true
         }
     }
      componentDidMount(){   
@@ -29,7 +31,8 @@ class Landing extends Component{
                 latestMovies: [...latest.data.results],
                 topRated: [...rated.data.results],
                 nowPlaying: [...now.data.results],
-                upcoming: [...upcoming.data.results]
+                upcoming: [...upcoming.data.results],
+                Loading: false
             })
         }))
     }
@@ -42,8 +45,9 @@ class Landing extends Component{
             backgroundSize:'cover'
         };
         return(
+
             <section className = "Landing-section">  
-            
+            {this.state.loading ? <Loading/> : null}
             <div className = "landing-decoration-container" style = {image}>
                 <div className = "landing-search">
                     <h2>Search For a Movie:</h2>

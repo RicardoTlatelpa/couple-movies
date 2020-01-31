@@ -47,7 +47,7 @@ class Landing extends Component{
         return(
 
             <section className = "Landing-section">  
-            {this.state.loading ? <Loading/> : null}
+            {this.state.Loading ? <Loading/> : null}
             <div className = "landing-decoration-container" style = {image}>
                 <div className = "landing-search">
                     <h2>Search For a Movie:</h2>

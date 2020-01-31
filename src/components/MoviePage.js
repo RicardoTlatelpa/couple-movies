@@ -40,6 +40,7 @@ class MoviePage extends Component{
         let thirdr = await axios.get(similar);
         let trailerResponse = await axios.get(trailer);
         
+        
         this.setState({
             movie_title: response.data.title,
             posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
@@ -50,9 +51,7 @@ class MoviePage extends Component{
             trailerData: [...trailerResponse.data.results]   
         })        
     }
-    navigateBack(){
-
-    }
+    
       updateWindowDimensions() {
         this.setState({width: window.innerWidth, height: window.innerHeight});  
         if(this.state.width <= 1840){

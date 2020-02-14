@@ -23,9 +23,11 @@ class MoviePage extends Component{
             movie_title: '',
             width: 0,
             height: 0,
-            resize: false
+            resize: false,
+            moviePage: false
         }        
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        this.handleMoviePage = this.handleMoviePage.bind(this);
     }
     async componentDidMount(){
         this.props.toggleHeader(false);
@@ -63,7 +65,28 @@ class MoviePage extends Component{
       componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
+
+      handleMoviePage(){
+          this.setState((state) => ({
+              moviePage: !state.moviePage
+          }))
+      }
+
     render(){    
+        let trailerPage;
+        this.state.moviePage ? trailerPage = (
+            <div className = "absolute-trailerPage">
+                <center>
+                <div className = "poster-trailers">
+                           
+                           
+                           <Trailers trailers = {this.state.trailerData} exit = {this.handleMoviePage}/>
+                           
+                       </div>
+                </center>
+            </div>
+        ) : trailerPage = null;
+        
         let hasSimilar;
         this.state.similarData.length > 1 ? hasSimilar = (
             <section className = "similar-section">
@@ -91,6 +114,7 @@ class MoviePage extends Component{
         }
         return(
             <div>
+                {trailerPage}
             <div className = "poster-container" style = {posterImage}>
             <Link to = "/">           
             <i id = 'poster-arrow-left' style = {{color: "white"}} className="fas fa-arrow-left"></i>
@@ -101,6 +125,11 @@ class MoviePage extends Component{
                 </div>                
             </div>
             <section className = "poster-info-container">
+                <center>
+                    <button onClick = {this.handleMoviePage} id = "trailer-button">
+                        Trailers
+                    </button>
+                </center>
             {this.state.movieData.map(movie =>(
                                 <div key = {uuid()} className = "poster-info">   
                                 <div className = "poster-poster">                
@@ -113,12 +142,6 @@ class MoviePage extends Component{
                                </div>                   
                            </div>
                        ) )}
-                       <div className = "poster-trailers">
-                           
-                           
-                           <Trailers trailers = {this.state.trailerData}/>
-                           
-                       </div>
                        <div className = "poster-cast">
                             <h1>Cast</h1>
                             <hr/>

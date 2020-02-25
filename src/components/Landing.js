@@ -50,7 +50,7 @@ class Landing extends Component{
             {this.state.Loading ? <Loading/> : null}
             <div className = "landing-decoration-container" style = {image}>
                 <div className = "landing-search">
-                    <h2>Search For a Movie:</h2>
+                    <h2 id = "search_landing_title">Search For a Movie:</h2>
                     <Searchbar/>
                 </div>
             <div className = "top-rated-section">

@@ -19,7 +19,6 @@ class App extends Component {
     this.sideNavToggleHandler = this.sideNavToggleHandler.bind(this);
   }
   toggleHeader(bool){
-    const { header } = this.state;
     this.setState({
       header: bool
     });

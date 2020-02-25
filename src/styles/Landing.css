@@ -1,22 +1,49 @@
 .Landing-section{
     padding:0;
+    position: relative;
+ 
 }
 .top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
     text-align: center;
     padding: 50px 100px;
 }
+
 .landing-decoration-container{
-    padding-top: 10vh;
     height: 100vh;
+    position: relative;
+}
+.top-rated-section{
+    position: absolute;  
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 130px;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background: rgba(0, 0, 0, 0.534);
+    border-radius: 80px 80px 30px 30px;
+}
+#search_landing_title{
+    font-size: 2rem;
+    font-weight: 300;
 }
 .landing-search{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     flex-direction: column;   
     max-width: 400px;
-    margin: 0 auto;
+    margin: 0 auto;        
+    height: 40%;
+}
+@media(max-width:780px){
+    .landing-search{
+        height: 40%;
+    }
+    .top-rated-section{        
+        position: relative;
+        bottom:130px;
+    }
 }
 footer{
     display: flex;

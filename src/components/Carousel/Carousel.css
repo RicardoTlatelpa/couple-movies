@@ -34,3 +34,9 @@
 .trailer-component{
     margin: 10px;
 }
+
+@media(min-height: 800px){
+    .carousel-button button{
+        font-size: 1.2rem;
+    }
+}

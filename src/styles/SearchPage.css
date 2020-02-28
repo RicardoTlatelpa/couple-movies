@@ -4,7 +4,14 @@
     margin: 0 auto;
     width: 800px;
 }
-
+.Searchpage-section h1{
+    margin-top: 30px;
+}
+@media(min-width: 1000px){
+    .Searchpage-section h1{
+        text-align: center;
+    }
+}
 @media(max-width: 930px){
     .Searchpage-section{
         padding: 0;

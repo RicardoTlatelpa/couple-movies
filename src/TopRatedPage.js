@@ -22,7 +22,7 @@ class TopRatedPage extends Component{
         return(
             <div className = "topratedpage-container">
                 <center>
-                <h1>Top Rated</h1>
+                <h1 id = "top-popular-title">Top Rated</h1>
                 </center>
                 <div className = "rated-movies-container">
                 {this.state.data.map(movie => (

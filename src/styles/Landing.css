@@ -6,6 +6,7 @@
 .top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
     text-align: center;
     padding: 50px 100px;
+    color: rgb(216, 216, 216);
 }
 
 .landing-decoration-container{
@@ -26,6 +27,7 @@
 #search_landing_title{
     font-size: 2rem;
     font-weight: 300;
+    color: rgb(216, 216, 216);
 }
 .landing-search{
     display: flex;
@@ -36,15 +38,7 @@
     margin: 0 auto;        
     height: 40%;
 }
-@media(max-width:780px){
-    .landing-search{
-        height: 40%;
-    }
-    .top-rated-section{        
-        position: relative;
-        bottom:130px;
-    }
-}
+
 footer{
     display: flex;
     width: 100%;
@@ -58,6 +52,17 @@ footer span{
 .horizontal-line{
     border-top: 3px solid yellow;
     padding: 5px;
+}
+
+@media(max-width:780px){
+    .landing-search{
+        height: 40%;
+    }
+    .top-rated-section{        
+        position: relative;
+        bottom:150px;
+        background: none;
+    }
 }
 
 @media screen and (max-width: 955px){

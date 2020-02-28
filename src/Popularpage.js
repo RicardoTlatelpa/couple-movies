@@ -22,7 +22,7 @@ class Popularpage extends Component{
         return(
             <div className = "popularpage-container">
                 <center>
-                <h1>Popular</h1>
+                <h1 id = "top-popular-title">Popular</h1>
                 </center>
                 <div className = "popular-movies-container">
                 {this.state.data.map(movie => (

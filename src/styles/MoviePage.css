@@ -156,6 +156,10 @@ section{
     .poster-info{
         text-align: center;
     }
+    hr{
+        width: 40%;
+        margin: 0 auto;
+    }
     
 }
 

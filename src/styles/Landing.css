@@ -10,16 +10,12 @@
 }
 
 .landing-decoration-container{
-    height: 100vh;
+    height: 90vh;
     position: relative;
 }
 .top-rated-section{
     position: absolute;  
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 130px;
-    left: 0;
-    right: 0;
+    width: 100%;     
     bottom:0;
     background: rgba(0, 0, 0, 0.534);
     border-radius: 80px 80px 30px 30px;

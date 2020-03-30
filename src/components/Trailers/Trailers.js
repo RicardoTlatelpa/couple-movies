@@ -8,7 +8,7 @@ class Trailers extends Component {
         return(
             
             <div className = "Trailer-container">                
-                <div class = "trailers-title">    
+                <div className = "trailers-title">    
                     
                     <h1 id = "main-title">Trailers</h1>
                     

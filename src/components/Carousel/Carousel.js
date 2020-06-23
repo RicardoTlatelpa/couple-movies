@@ -48,6 +48,7 @@ class Carousel extends Component {
             id = {movie.id}
             imageUrl = {`${posterURL}w500${movie.poster_path}`}
             title ={movie.title}
+            class = "carousel__poster"
             />
         ))
     }

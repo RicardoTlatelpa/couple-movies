@@ -7,6 +7,9 @@
     justify-content: center;
     align-items: center;
 }
+.carousel__poster{
+    margin: 10px !important;
+}
 .carousel-viewport{
     white-space: nowrap;
     overflow-y: hidden;

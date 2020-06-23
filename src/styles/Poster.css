@@ -22,3 +22,9 @@
     transform: scale(1.1);
 }
 
+@media(max-width: 900px){
+.Poster, .card-inside img {
+    margin: 0;
+
+}
+}

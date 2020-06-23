@@ -1,24 +1,29 @@
 .Landing-section{
     padding:0;
-    position: relative;
- 
 }
-.top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
+.latest-movies-section, .now-playing-section, .upcoming-section{
     text-align: center;
     padding: 50px 100px;
     color: rgb(216, 216, 216);
 }
-
+.top-rated-section{
+    text-align: center;
+    color: rgb(216, 216, 216);
+}
 .landing-decoration-container{
     height: 90vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.top-rated-section{
-    position: absolute;  
-    width: 100%;     
-    bottom:0;
-    background: rgba(0, 0, 0, 0.534);
+.top-rated-section{    
+    width: 100%;         
+    /* background: rgba(0, 0, 0, 0.534); */
     border-radius: 80px 80px 30px 30px;
+    position:absolute;
+    bottom: 0;
 }
 #search_landing_title{
     font-size: 2rem;
@@ -31,8 +36,8 @@
     align-items: center;
     flex-direction: column;   
     max-width: 400px;
-    margin: 0 auto;        
-    height: 40%;
+    margin: 0 auto;
+    transform: translateY(-140%)            ;
 }
 
 footer{
@@ -50,19 +55,10 @@ footer span{
     padding: 5px;
 }
 
-@media(max-width:780px){
-    .landing-search{
-        height: 40%;
-    }
-    .top-rated-section{        
-        position: relative;
-        bottom:150px;
-        background: none;
-    }
-}
+
 
 @media screen and (max-width: 955px){
-    .top-rated-section, .latest-movies-section, .now-playing-section, .upcoming-section{
+    .latest-movies-section, .now-playing-section, .upcoming-section{
         padding:50px 0px;
     
     }

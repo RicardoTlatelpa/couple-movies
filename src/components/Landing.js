@@ -76,7 +76,6 @@ class Landing extends Component{
                     <br/>
                     <span>Designed by Ricardo Tlatelpa</span>
                     </div>
-                    <p>아름 사랑해</p>
                 </footer>          
             </section>
         )

@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Poster from './components/Poster';
+import { getPosterUrl } from './helpers/placeholders';
 import './styles/TopRatedPage.css';
-
-const baseURL = `http://image.tmdb.org/t/p/`;
 class TopRatedPage extends Component{
     constructor(props){
         super(props);
@@ -26,7 +25,7 @@ class TopRatedPage extends Component{
                 </center>
                 <div className = "rated-movies-container">
                 {this.state.data.map(movie => (
-                    <Poster title = {movie.title} imageUrl = {`${baseURL}w500/${movie.poster_path}`} id = {movie.id}/>
+                    <Poster title={movie.title} imageUrl={getPosterUrl(movie.poster_path)} id={movie.id} />
                 ))}
                 </div>
                 <div className = "pagination-container">

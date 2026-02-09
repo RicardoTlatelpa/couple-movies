@@ -38,7 +38,7 @@ class App extends Component {
     <React.Fragment>
       {this.state.header ? <div>
         <Navbar toggle = {this.sideNavToggleHandler}/>
-      <Sidenav show = {this.state.sideNavOpen}/>
+      <Sidenav show={this.state.sideNavOpen} onClose={this.sideNavToggleHandler} />
       </div> : null}
       
       

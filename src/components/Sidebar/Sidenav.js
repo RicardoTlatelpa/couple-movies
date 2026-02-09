@@ -1,21 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Searchbar from '../Searchbar';
 import './Sidenav.css';
-class Sidenav extends Component{
-    render(){
-        let drawerClasses = 'Sidenav-container';
-        if(this.props.show){
-            drawerClasses = 'Sidenav-container open';
-        }
-        return(
-            <div className = {drawerClasses}>
-                <Searchbar/>
-                <a className = "Sidenav-item" href = "/">Home</a>
-                <a className = "Sidenav-item" href = "/rated/1">Top Rated</a>
-                <a className = "Sidenav-item" href = "/popular/1">Popular</a>
-            </div>
-        )
-    }
+
+function Sidenav({ show, onClose }) {
+  return (
+    <div className={`Sidenav-container ${show ? 'open' : ''}`}>
+      <Searchbar onSearchSubmit={onClose} />
+      <Link className="Sidenav-item" to="/">Home</Link>
+      <Link className="Sidenav-item" to="/rated/1">Top Rated</Link>
+      <Link className="Sidenav-item" to="/popular/1">Popular</Link>
+    </div>
+  );
 }
 
 export default Sidenav;

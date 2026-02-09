@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Poster from './Poster';
+import { getPosterUrl } from '../helpers/placeholders';
 import '../styles/SearchPage.css';
-const postURL = `http://image.tmdb.org/t/p/`;
 
 class SearchPage extends Component{
     constructor(props){
@@ -27,7 +27,7 @@ class SearchPage extends Component{
                 
                     {this.state.searchData.map(result => (
                         
-                        <Poster title = {result.title} id = {result.id} imageUrl = {result.poster_path === null ? `https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg`:`${postURL}w500/${result.poster_path}`}/>
+                        <Poster title={result.title} id={result.id} imageUrl={getPosterUrl(result.poster_path)} />
                     ))}
                 </div>
             </section>

@@ -1,81 +1,151 @@
-.Landing-section{
-    padding:0;
+.Landing-section {
+  padding: 0;
+  overflow-x: hidden;
 }
-.latest-movies-section, .now-playing-section, .upcoming-section{
-    text-align: center;
-    padding: 50px 100px;
-    color: rgb(216, 216, 216);
+
+.api-error-banner {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  margin: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
 }
-.top-rated-section{
-    text-align: center;
-    color: rgb(216, 216, 216);
+
+.api-error-banner h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
-.landing-decoration-container{
-    height: 90vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+.api-error-banner p {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
 }
-.top-rated-section{    
-    width: 100%;         
-    /* background: rgba(0, 0, 0, 0.534); */
-    border-radius: 80px 80px 30px 30px;
-    position:absolute;
-    bottom: 0;
+
+.api-error-banner a {
+  color: var(--accent);
 }
-#search_landing_title{
+
+.landing-decoration-container {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+
+.landing-decoration-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(180deg, transparent 0%, var(--bg-primary) 100%);
+  pointer-events: none;
+}
+
+.landing-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+#search_landing_title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.top-rated-section {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0 48px;
+  overflow: hidden;
+}
+
+.top-rated-section h2,
+.latest-movies-section h2,
+.now-playing-section h2,
+.upcoming-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.latest-movies-section,
+.now-playing-section,
+.upcoming-section {
+  padding: 48px 48px 64px;
+  color: var(--text-secondary);
+  overflow-x: hidden;
+}
+
+.content-section {
+  margin-bottom: 16px;
+}
+
+.content-section:last-of-type {
+  margin-bottom: 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.horizontal-line {
+  text-align: center;
+}
+
+.horizontal-line p,
+.horizontal-line span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.horizontal-line span {
+  display: block;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .top-rated-section,
+  .latest-movies-section,
+  .now-playing-section,
+  .upcoming-section {
+    padding: 32px 24px 48px;
+  }
+
+  #search_landing_title {
     font-size: 2rem;
-    font-weight: 300;
-    color: rgb(216, 216, 216);
-}
-.landing-search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;   
-    max-width: 400px;
-    margin: 0 auto;
-    transform: translateY(-140%)            ;
-    padding-bottom: 1.5rem;
-}
+  }
 
-footer{
-    display: flex;
-    width: 100%;
-    height: 2rem;
-    justify-content: space-between;
-    padding: 40px 15px;    
+  .top-rated-section {
+    bottom: 40px;
+    padding: 0 24px;
+  }
 }
-footer span{
-    padding-bottom: 20px;
-}
-.horizontal-line{
-    border-top: 3px solid yellow;
-    padding: 5px;
-}
-
-
-
-@media screen and (max-width: 955px){
-    .latest-movies-section, .now-playing-section, .upcoming-section{
-        padding:50px 0px;
-    
-    }
-}
-
-@media screen and (max-width: 1761px){
-    .Landing-container {
-        padding: 10vh 0;        
-    }
-}
-
-@media screen and (min-width : 1400px) {
-    
-    .landing-movies-container{
-        max-width: 1500px;
-    }
-    
-}
-

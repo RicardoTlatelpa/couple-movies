@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Poster from './components/Poster';
-
-const baseURL = `http://image.tmdb.org/t/p/`;
+import { getPosterUrl } from './helpers/placeholders';
+import './styles/TopRatedPage.css';
 
 class Popularpage extends Component{
     constructor(props){
@@ -26,7 +26,7 @@ class Popularpage extends Component{
                 </center>
                 <div className = "popular-movies-container">
                 {this.state.data.map(movie => (
-                    <Poster title = {movie.title} imageUrl = {`${baseURL}w500/${movie.poster_path}`} id = {movie.id}/>
+                    <Poster title={movie.title} imageUrl={getPosterUrl(movie.poster_path)} id={movie.id} />
                 ))}
                 </div>
                 <div className = "pagination-container">

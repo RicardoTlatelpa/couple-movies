@@ -1,13 +1,15 @@
-import {decimal} from '../helpers/decimalCount';
-import {date} from '../helpers/dateShifter';
-import React, {Component} from 'react';
+import { decimal } from '../helpers/decimalCount';
+import { date } from '../helpers/dateShifter';
+import { formatRating } from '../helpers/formatRating';
+import { getPosterUrl, getProfileUrl, getBackdropUrl, PLACEHOLDERS } from '../helpers/placeholders';
+import React, { Component } from 'react';
 import axios from 'axios';
 import '../styles/MoviePage.css';
 import Carousel from '../components/Carousel/Carousel';
-import { uuid } from 'uuidv4'
+import { uuid } from 'uuidv4';
 import Trailers from './Trailers/Trailers';
 import { Link } from 'react-router-dom';
-const baseURL = `http://image.tmdb.org/t/p/`;
+import MoviePageLoading from './MoviePage/MoviePageLoading';
 
 class MoviePage extends Component{    
     constructor(props){
@@ -24,34 +26,104 @@ class MoviePage extends Component{
             width: 0,
             height: 0,
             resize: false,
-            moviePage: false
-        }        
+            moviePage: false,
+            loading: true,
+            loadingFadeOut: false,
+        };
+        this.contentRef = React.createRef();
+        this.assetsCheckStarted = false;
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.handleMoviePage = this.handleMoviePage.bind(this);
     }
-    async componentDidMount(){
+    componentDidMount(){
+        window.scrollTo(0, 0);
         this.props.toggleHeader(false);
         this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);    
-        const castURL = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}`
-        const url = `https://api.themoviedb.org/3/movie/${this.state.movie_id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`;
-        const similar = `https://api.themoviedb.org/3/movie/${this.state.movie_id}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`
-        const trailer =  `https://api.themoviedb.org/3/movie/${this.state.movie_id}/videos?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`
-        let response = await axios.get(url);
-        let secondr = await axios.get(castURL); 
-        let thirdr = await axios.get(similar);
-        let trailerResponse = await axios.get(trailer);
-        
-        
+        window.addEventListener('resize', this.updateWindowDimensions);
+        this.fetchMovieData(this.props.match.params.id);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const newId = this.props.match.params.id;
+        if (prevProps.match.params.id !== newId) {
+            window.scrollTo(0, 0);
+            this.assetsCheckStarted = false;
+            this.setState({ movie_id: newId, loading: true, loadingFadeOut: false });
+            this.fetchMovieData(newId);
+            return;
+        }
+        if (this.state.movieData.length > 0 && this.state.loading && !this.assetsCheckStarted) {
+            this.assetsCheckStarted = true;
+            this.waitForAssetsAndPaint();
+        }
+    }
+
+    async fetchMovieData(movieId) {
+        const castURL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}`;
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`;
+        const similar = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`;
+        const trailer = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`;
+        const [response, secondr, thirdr, trailerResponse] = await Promise.all([
+            axios.get(url),
+            axios.get(castURL),
+            axios.get(similar),
+            axios.get(trailer),
+        ]);
         this.setState({
             movie_title: response.data.title,
-            posterPath: `http://image.tmdb.org/t/p/original/${response.data.backdrop_path}`,
+            posterPath: getBackdropUrl(response.data.backdrop_path),
             movieData: [response.data],
-            castData: [...secondr.data.cast.slice(0,5)],
+            castData: [...secondr.data.cast.slice(0, 5)],
             similarData: [...thirdr.data.results],
             rating: response.data.vote_average,
-            trailerData: [...trailerResponse.data.results]   
-        })        
+            trailerData: [...trailerResponse.data.results],
+        });
+    }
+
+    waitForAssetsAndPaint() {
+        requestAnimationFrame(() => {
+            const container = this.contentRef.current;
+            if (!container) {
+                this.finishLoading();
+                return;
+            }
+            const images = container.querySelectorAll('img');
+            const backdropUrl = this.state.posterPath;
+            let pending = (backdropUrl ? 1 : 0) + images.length;
+            let finished = false;
+            if (pending === 0) {
+                this.finishLoading();
+                return;
+            }
+            const checkComplete = () => {
+                pending--;
+                if (pending <= 0 && !finished) {
+                    finished = true;
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => this.finishLoading());
+                    });
+                }
+            };
+            if (backdropUrl) {
+                const bgImg = new Image();
+                bgImg.onload = checkComplete;
+                bgImg.onerror = checkComplete;
+                bgImg.src = backdropUrl;
+            }
+            images.forEach((img) => {
+                if (img.complete) {
+                    checkComplete();
+                } else {
+                    img.addEventListener('load', checkComplete);
+                    img.addEventListener('error', checkComplete);
+                }
+            });
+        });
+    }
+
+    finishLoading() {
+        this.setState({ loadingFadeOut: true });
+        setTimeout(() => this.setState({ loading: false }), 600);
     }
     
       updateWindowDimensions() {
@@ -62,9 +134,9 @@ class MoviePage extends Component{
             })
         }
       }
-      componentWillUnmount() {
+    componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
-      }
+    }
 
       handleMoviePage(){
           this.setState((state) => ({
@@ -107,13 +179,16 @@ class MoviePage extends Component{
             </div>
         )
         const posterImage = {
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${this.state.posterPath}")`,
+            backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 50%, transparent 100%), url("${this.state.posterPath}")`,
             backgroundSize: `cover`,
             backgroundRepeat: 'no-repeat',   
             backgroundPosition: 'center center'         
         }
         return(
-            <div>
+            <div ref={this.contentRef}>
+                {this.state.loading && (
+                    <MoviePageLoading fadeOut={this.state.loadingFadeOut} />
+                )}
                 {trailerPage}
             <div className = "poster-container" style = {posterImage}>
             <Link to = "/">           
@@ -121,19 +196,21 @@ class MoviePage extends Component{
             </Link>
                 <div className = "poster-name">
                     <h1>{this.state.movie_title}</h1>                
-                    <span>Rating: {this.state.rating}</span>
+                    <span>Rating: {formatRating(this.state.rating)}</span>
                 </div>                
             </div>
             <section className = "poster-info-container">
+                {this.state.trailerData.length > 0 && (
                 <center>
                     <button onClick = {this.handleMoviePage} id = "trailer-button">
                         Trailers
                     </button>
                 </center>
+                )}
             {this.state.movieData.map(movie =>(
                                 <div key = {uuid()} className = "poster-info">   
                                 <div className = "poster-poster">                
-                                <img src = {movie.poster_path === null ? 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg':`${baseURL}w342/${movie.poster_path}`} alt = {movie.id}/> 
+                                <img src={getPosterUrl(movie.poster_path, 'w342')} alt={movie.title || movie.id} onError={(e) => { e.target.src = PLACEHOLDERS.poster; }} /> 
                                 </div>                                                    
                                 <div className = "information">
                                <p><span>Overview:</span><br/>{movie.overview}</p>
@@ -142,23 +219,26 @@ class MoviePage extends Component{
                                </div>                   
                            </div>
                        ) )}
-                       <div className = "poster-cast">
-                            <h1>Cast</h1>
-                            <hr/>
-                            <div className = "cast-container">
-                               {this.state.castData.map(member => (
-                                    <div key = {uuid()} className = "cast-member">
-                                    <div className = "cast-member-image">
-                                        <img className = "actor-image" src = {`${baseURL}w342/${member.profile_path}`} alt ={member.id}/>
-                                    </div>
-                                    <div className = "cast-member-overview">                                        
-                                        <p><strong>{member.name}</strong></p>
-                                        <p>{member.character}</p>
-                                    </div>
+                       <div className="poster-cast spotlight-section">
+                            <div className="spotlight-header">
+                                <span className="spotlight-badge">SPOTLIGHT</span>
+                                <h1>Cast</h1>
+                            </div>
+                            <div className="cast-container">
+                               {this.state.castData.map((member, index) => (
+                                    <div key={uuid()} className="cast-member spotlight-card" style={{ animationDelay: `${index * 0.1}s` }}>
+                                        <div className="spotlight-beam">
+                                            <div className="cast-member-image">
+                                                <img className="actor-image" src={getProfileUrl(member.profile_path)} alt={member.name} onError={(e) => { e.target.src = PLACEHOLDERS.profile; }} />
+                                            </div>
+                                        </div>
+                                        <div className="cast-member-overview">                                        
+                                            <p className="cast-name"><strong>{member.name}</strong></p>
+                                            <p className="cast-character">{member.character}</p>
+                                        </div>
                                     </div>
                                ))}                               
                             </div>
-                           
                        </div>
             </section>
           {hasSimilar}

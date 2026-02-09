@@ -3,7 +3,7 @@ import scrollTo from './scrollToAnimate';
 import './Carousel.css';
 import Poster from '../Poster';
 import { uuid } from 'uuidv4';
-const posterURL =`http://image.tmdb.org/t/p/`;
+import { getPosterUrl } from '../../helpers/placeholders';
 
 //pass props to state. array of movies
 class Carousel extends Component {
@@ -44,11 +44,11 @@ class Carousel extends Component {
     renderPosters(){
         return this.props.array.map(movie => (
             <Poster
-            key = {uuid()}
-            id = {movie.id}
-            imageUrl = {`${posterURL}w500${movie.poster_path}`}
-            title ={movie.title}
-            class = "carousel__poster"
+            key={uuid()}
+            id={movie.id}
+            imageUrl={getPosterUrl(movie.poster_path)}
+            title={movie.title}
+            class="carousel__poster"
             />
         ))
     }
@@ -65,7 +65,7 @@ class Carousel extends Component {
     }
     handleLeftNav(e){
         const numOfSlidesToScroll = this.state.slidesToScroll;
-        const widthOfSlide = 205;
+        const widthOfSlide = 200;
         const { carouselViewport } = this.refs;
         const timeToMoveOneSlide = 200;
         const totalTimeToMove = Math.min((numOfSlidesToScroll * timeToMoveOneSlide),400);
@@ -74,7 +74,7 @@ class Carousel extends Component {
     }
     handleRightNav(e){
         const numOfSlidesToScroll = this.state.slidesToScroll;
-        const widthOfSlide = 205;
+        const widthOfSlide = 200;
         const { carouselViewport } = this.refs;
         const timeToMoveOneSlide = 200;
         const totalTimeToMove = Math.min((timeToMoveOneSlide * numOfSlidesToScroll),400);
@@ -85,25 +85,29 @@ class Carousel extends Component {
     render(){
         
     return (
-        <div className = "carousel-container">
-            <div className = "carousel-button" >
-            <button 
-            className = "carousel-nav carousel-left-nav"
-            onClick = {this.handleLeftNav}
-            >
-            &#60;
-            </button>
-            </div>            
-            <div className = "carousel-viewport" ref = "carouselViewport">
-                {this.props.posters ? this.renderPosters() : this.renderTrailers()}
+        <div className="carousel-container">
+            <div className="carousel-button">
+                <button
+                    className="carousel-nav carousel-left-nav"
+                    onClick={this.handleLeftNav}
+                    aria-label="Scroll left"
+                >
+                    ‹
+                </button>
             </div>
-            <div className = "carousel-button">
-            <button 
-            className = "carousel-nav carousel-right-nav"
-            onClick = {this.handleRightNav}
-            >
-            &gt;
-            </button>
+            <div className="carousel-viewport-wrapper">
+                <div className="carousel-viewport" ref="carouselViewport">
+                    {this.props.posters ? this.renderPosters() : this.renderTrailers()}
+                </div>
+            </div>
+            <div className="carousel-button">
+                <button
+                    className="carousel-nav carousel-right-nav"
+                    onClick={this.handleRightNav}
+                    aria-label="Scroll right"
+                >
+                    ›
+                </button>
             </div>
         </div>
     );

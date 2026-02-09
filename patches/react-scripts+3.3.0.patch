@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-scripts/config/webpackDevServer.config.js b/node_modules/react-scripts/config/webpackDevServer.config.js
+index b1b14a5..9141410 100644
+--- a/node_modules/react-scripts/config/webpackDevServer.config.js
++++ b/node_modules/react-scripts/config/webpackDevServer.config.js
+@@ -112,7 +112,7 @@ module.exports = function(proxy, allowedHost) {
+       // We do this in development to avoid hitting the production cache if
+       // it used the same host and port.
+       // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
+-      app.use(noopServiceWorkerMiddleware());
++      app.use(noopServiceWorkerMiddleware(paths.servedPath));
+     },
+   };
+ };

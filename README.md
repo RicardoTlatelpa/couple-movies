@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+
+This app uses the [TMDB (The Movie Database) API](https://www.themoviedb.org/). You need to add your API key:
+
+1. Create an account at [themoviedb.org](https://www.themoviedb.org/) (free)
+2. Go to [Settings → API](https://www.themoviedb.org/settings/api) and request an API key
+3. Copy `.env.example` to `.env` (or edit `.env` if it exists)
+4. Replace `your_tmdb_api_key_here` with your actual API key
+5. Restart the dev server (`npm start`)
+
 ## Available Scripts
 
 In the project directory, you can run:

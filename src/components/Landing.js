@@ -15,7 +15,8 @@ class Landing extends Component{
             topRated: [],
             nowPlaying: [],
             upcoming: [],
-            Loading: true
+            Loading: true,
+            error: null
         }
     }
      componentDidMount(){   
@@ -32,9 +33,16 @@ class Landing extends Component{
                 topRated: [...rated.data.results],
                 nowPlaying: [...now.data.results],
                 upcoming: [...upcoming.data.results],
-                Loading: false
+                Loading: false,
+                error: null
             })
         }))
+        .catch(err => {
+            const message = !process.env.REACT_APP_MOVIE_KEY || process.env.REACT_APP_MOVIE_KEY === 'your_tmdb_api_key_here'
+                ? 'API key not configured. Add REACT_APP_MOVIE_KEY to your .env file. See README for setup.'
+                : (err.response?.status === 401 ? 'Invalid API key. Check your REACT_APP_MOVIE_KEY in .env' : err.message || 'Failed to load movies');
+            this.setState({ Loading: false, error: message });
+        });
     }
     render(){
          let backgroundpic = `${postURL}/original/p3TCqUDoVsrIm8fHK9KOTfWnDjZ.jpg`;
@@ -48,6 +56,13 @@ class Landing extends Component{
 
             <section className = "Landing-section">  
             {this.state.Loading ? <Loading/> : null}
+            {this.state.error ? (
+                <div style={{ padding: '2rem', textAlign: 'center', color: '#fff', background: 'rgba(0,0,0,0.7)', margin: '2rem' }}>
+                    <h3>API Error</h3>
+                    <p>{this.state.error}</p>
+                    <p><a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener noreferrer" style={{ color: '#01b4e4' }}>Get a free TMDB API key →</a></p>
+                </div>
+            ) : null}
             <div className = "landing-decoration-container" style = {image}>
                 <div className = "landing-search">
                     <h2 id = "search_landing_title">Search For a Movie:</h2>
